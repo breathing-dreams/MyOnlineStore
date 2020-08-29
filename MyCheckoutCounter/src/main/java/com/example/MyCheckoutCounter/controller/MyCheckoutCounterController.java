@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.MyCheckoutCounter.dao.ProdCatalogueRepository;
-import com.example.MyCheckoutCounter.dao.ProductRepository;
 import com.example.MyCheckoutCounter.model.Bill;
 import com.example.MyCheckoutCounter.model.Product;
-import com.example.MyCheckoutCounter.model.ProductCatalogue;
+import com.example.MyCheckoutCounter.service.MyCheckoutService;
 
 @Controller
 @RequestMapping("/onlinestore")
@@ -25,25 +23,11 @@ public class MyCheckoutCounterController {
 	
 	
 	private Bill bill;
-	private List<Product> productList;
-	
-	
-	private Product product;
-	
-	private ProductCatalogue prodCatalogue;
 	
 	@Autowired
-	private ProductRepository productRepo;
+	private MyCheckoutService myCheckoutService;
 	
-	@Autowired
-	private ProdCatalogueRepository prodCatalogueRepository;
-	
-	 @PostConstruct
-	    public void init() {
-		 prodCatalogue = new ProductCatalogue(); 
-		 product=new Product();
-		 productList=new ArrayList<Product>();
-	   }
+
 	
 	@GetMapping("/home")
 	public String onlineStoreHome() {
@@ -58,16 +42,8 @@ public class MyCheckoutCounterController {
 	@PostMapping("/scanProductId")
 	public String withdrawForm(@RequestParam("theProductId") Long theProductId,@RequestParam("theQuantity") int theQuantity,
 			Model theModel) {
-		
-		
-		prodCatalogue=prodCatalogueRepository.findById(theProductId).orElseThrow(
-				() -> new RuntimeException("Product not found - " + theProductId));
-		product.setProductId(prodCatalogue.getProductId());
-		product.setProductName(prodCatalogue.getProductName());
-		product.setProductPrice(prodCatalogue.getProductPrice());
-		product.setQuantity(theQuantity);
-		productList.add(product);
-		theModel.addAttribute("productList", productList);
+		myCheckoutService.getProductById(theProductId,theQuantity);
+		theModel.addAttribute("productList", myCheckoutService.getAllProducts());
 		return "checkout-counter";
 	}
 	
