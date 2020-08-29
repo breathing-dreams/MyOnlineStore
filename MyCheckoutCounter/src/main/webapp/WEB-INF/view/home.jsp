@@ -20,7 +20,9 @@
 	</div>
 	<hr>
 		<hr>
-		<a href="getAllBill">Proceed to Counter</a>
+		<p>
+			<a href="${pageContext.request.contextPath}/onlinestore/checkoutcounter">Proceed to Checkout</a>
+		</p>
 		<br><br>
 
 	</div>
