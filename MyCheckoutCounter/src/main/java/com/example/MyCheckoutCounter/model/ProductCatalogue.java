@@ -11,6 +11,7 @@ public class ProductCatalogue {
 	private Long productId;
 	private String productName;
 	private Double productPrice;
+	private String category;
 	
 	public ProductCatalogue() {
 		
@@ -39,5 +40,13 @@ public class ProductCatalogue {
 	public void setProductPrice(Double productPrice) {
 		this.productPrice = productPrice;
 	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}	
 	
 }

@@ -14,22 +14,16 @@ public class Product {
 	@Id
 	private Long productId;
 	private String productName;
-	private Double productPrice;	
+	private Double productPrice;
+	private String category;
 	private int quantity;
-	private Double totalAmount;
+	private Double totalAmount;	
+	private Double saleTax;
 	
 	public Product(){
 		
 	}
 	
-	public Product(String productName, Double productPrice, int quantity) {
-		super();
-		this.productName = productName;
-		this.productPrice = productPrice;
-		this.quantity = quantity;
-		this.totalAmount = this.productPrice * this.quantity;
-	}
-
 	public Long getProductId() {
 		return productId;
 	}
@@ -58,8 +52,38 @@ public class Product {
 	}
 
 	public Double getTotalAmount() {
-		return this.productPrice * this.quantity;
+		
+		return this.totalAmount;
 	}
+	
+	
+	public void setSaleTax() {
+		if(category.equalsIgnoreCase("A"))
+			this.saleTax = this.totalAmount*0.1;
+		else if(category.equalsIgnoreCase("B"))
+			this.saleTax = this.totalAmount*0.2;
+		else
+			this.saleTax = 0.0;
+	}
+
+	public Double getSaleTax() {
+		return this.saleTax;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setTotalAmount() {
+		this.totalAmount = this.productPrice * this.quantity;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+
+	
 	
 
 }

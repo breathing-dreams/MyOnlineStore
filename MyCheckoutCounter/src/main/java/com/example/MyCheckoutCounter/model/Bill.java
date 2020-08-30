@@ -21,18 +21,13 @@ public class Bill {
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Product> productList;
 	
-	private int amount;
+	private Double salesTax;
 	private Double totalPrice;
 	
 	public Bill(){
 		
 	}
 	
-	public Bill(int amount, Double totalPrice) {
-		super();
-		this.amount = amount;
-		this.totalPrice = totalPrice;
-	}
 	public Long getBillId() {
 		return billId;
 	}
@@ -45,12 +40,15 @@ public class Bill {
 	public void setProductList(List<Product> productList) {
 		this.productList = productList;
 	}
-	public int getAmount() {
-		return amount;
+	
+	public Double getSalesTax() {
+		return salesTax;
 	}
-	public void setAmount(int amount) {
-		this.amount = amount;
+
+	public void setSalesTax(Double salesTax) {
+		this.salesTax = salesTax;
 	}
+
 	public Double getTotalPrice() {
 		return totalPrice;
 	}
