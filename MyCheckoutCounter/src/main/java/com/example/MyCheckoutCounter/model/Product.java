@@ -8,14 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class Product {
 	
 	@Id
+	@NotNull
 	private Long productId;
 	private String productName;
 	private Double productPrice;
+	
 	private String category;
+	@NotNull
 	private int quantity;
 	private Double totalAmount;	
 	private Double saleTax;

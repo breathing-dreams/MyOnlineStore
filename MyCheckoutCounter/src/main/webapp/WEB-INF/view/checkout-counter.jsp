@@ -27,6 +27,8 @@
     <ul>
         <li><label>Enter Product Id:</label> <input type='text' name='theProductId' /></li>
         <li><label>Enter Quantity: </label> <input type='text' name='theQuantity' /></li>
+        
+
         <li><label>&nbsp;</label> <input type="submit" value="Scan" class="btn"></li>
         <li><label>&nbsp;</label> <input id="cleart()" type="reset" value="clear" class="btn"></li>
     </ul>
