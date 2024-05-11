@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class DiscountCalculator {
+    public static void main(String[] args) {
+        // Create a Scanner object to read input from the user
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter the original price
+        System.out.print("Enter the original price: ");
+        double originalPrice = scanner.nextDouble();
+
+        // Calculate the discounted price (50% discount)
+        double discount = 0.50; // 50%
+        double discountedPrice = originalPrice * (1 - discount);
+
+        // Display the discounted price
+        System.out.println("Discounted price: $" + discountedPrice);
+
+        // Close the Scanner object
+        scanner.close();
+    }
+}
